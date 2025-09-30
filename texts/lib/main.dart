@@ -16,7 +16,8 @@ class MyApp extends StatelessWidget {
 }
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  final TextEditingController controller = TextEditingController();
+  HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -85,7 +86,7 @@ class HomePage extends StatelessWidget {
                   ]
                 ),
             ),
-            Text(
+            SelectableText(
               "You can select this text",
               style: TextStyle(
                 fontSize: 20,
@@ -98,11 +99,43 @@ class HomePage extends StatelessWidget {
                 style: TextStyle(color: Colors.green, fontSize: 22),
               ),
             ),
+            Inputs(controller: controller,),
+            ElevatedButton(
+              onPressed: () {
+                ScaffoldMessenger.of(
+                  context,
+                ).showSnackBar(SnackBar(content: Text("You typed: ${controller.text}")));
+              },
+              child: Text("Submit"),
+            ),
           ]
         ),
       ),
     );
   }
 }
+
+class Inputs extends StatefulWidget {
+  final TextEditingController controller;
+
+  const Inputs({super.key, required this.controller});
+
+  @override
+  State<Inputs> createState() => _InputsState();
+}
+
+class _InputsState extends State<Inputs> {
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      controller: widget.controller,
+      decoration: InputDecoration(
+        border: OutlineInputBorder(),
+        labelText: "Enter text",
+      ),
+    );
+  }
+}
+
 
 

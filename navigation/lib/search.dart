@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:navigation/container.dart';
+import 'package:navigation/builder.dart';
 
 class Search extends StatefulWidget {
   const Search({super.key});
@@ -37,7 +37,6 @@ class _SearchState extends State<Search> {
                 child: TextField(
                   controller: _controller,
                   decoration: InputDecoration(
-                    labelText: 'Search',
                     hintText: 'Ilova ichida qidiring',
                     border: OutlineInputBorder(),
                     prefixIcon: Icon(Icons.search),

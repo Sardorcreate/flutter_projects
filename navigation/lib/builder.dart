@@ -52,6 +52,8 @@ class ColumnBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Text(text1, style: TextStyle(fontSize: size1)),
         Text(
@@ -63,3 +65,39 @@ class ColumnBuilder extends StatelessWidget {
   }
 }
 
+class InkWellBuilder extends StatelessWidget {
+  const InkWellBuilder({
+    super.key,
+    required this.text,
+    required this.icon,
+    required this.onTap,
+  });
+
+  final String text;
+  final IconData icon;
+  final VoidCallback? onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      child: ContainersBuilder(
+        width: 120, height: 110, color: Colors.white,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Icon(icon, color: Colors.teal,),
+            Text(text,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 17,
+                color: Colors.teal,
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}

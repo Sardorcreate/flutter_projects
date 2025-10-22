@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:third/core/utils/colors.dart';
-import 'package:third/recipe_icon_button.dart';
-import 'package:third/recipe_icon_button_container.dart';
+import 'package:third/features/common/presentation/widgets/recipe_icon_button.dart';
+import 'package:third/features/common/presentation/widgets/recipe_icon_button_container.dart';
 
 class RecipeAppBar extends StatelessWidget implements PreferredSizeWidget {
   const RecipeAppBar({

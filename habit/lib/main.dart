@@ -21,17 +21,3 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class Mag extends StatefulWidget {
-  const Mag({super.key});
-
-  @override
-  State<Mag> createState() => _MagState();
-}
-
-class _MagState extends State<Mag> {
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
-  }
-}
-

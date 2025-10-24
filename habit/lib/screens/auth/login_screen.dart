@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:habit/core/constants/app_colors.dart';
 import 'package:habit/screens/auth/forgot_password.dart';
 import 'package:habit/screens/auth/signup_screen.dart';
+import 'package:habit/screens/main_screen.dart';
 import 'package:habit/widgets/app_bar.dart';
 import 'package:habit/widgets/auth_widgets.dart';
 
@@ -50,11 +51,9 @@ class _LoginState extends State<Login> {
       return;
     }
 
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text("You log in successfully !"),
-        backgroundColor: Colors.green,
-      )
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => MainScreen()),
     );
   }
 

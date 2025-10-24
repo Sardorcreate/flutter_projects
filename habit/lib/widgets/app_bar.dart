@@ -11,10 +11,12 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget{
   Size get preferredSize => const Size(double.infinity, 72);
 
   final String title;
+  final hasIcon = true;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      scrolledUnderElevation: 0,
       toolbarHeight: 74,
       backgroundColor: AppColors.background,
       leading: Padding(
@@ -34,6 +36,13 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget{
         margin: EdgeInsets.only(left: 24),
         child: Text(title, style: TextStyle(fontSize: 18)),
       ),
+      actions: [
+        IconButton(
+          splashColor: Colors.transparent,
+          onPressed: () {},
+          icon: Icon(Icons.more_vert, size: 24),
+        )
+      ],
     );
   }
 }

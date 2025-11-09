@@ -60,7 +60,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
 
     return Scaffold(
       backgroundColor: AppColors.background,
-      appBar: AppBarWidget(title: "Forgot Password"),
+      appBar: AppBarWidget(title: "Forgot Password", background: AppColors.background),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(horizontal: 36, vertical: 24),
         child: Column(

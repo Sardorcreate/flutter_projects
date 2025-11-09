@@ -1,21 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:habit/core/constants/app_colors.dart';
+import 'package:habit/screens/main_screen.dart';
 import 'package:habit/screens/onboarding.dart';
 
-class SplashScreen extends StatelessWidget {
+import '../core/storage/notes_storage.dart';
+
+class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    isLoggedIn();
+    super.initState();
+  }
+  isLoggedIn() async {
+    final isLoggedIn = await NotesLocalStorage.getIsLoggedIn();
+    Future.delayed(Duration(seconds: 2),() {
+      Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => isLoggedIn == true ? MainScreen(key: MainScreen.globalKey) : Onboarding())
+      );
+    });
+  }
   @override
   Widget build(BuildContext context) {
 
     double screenHeight = MediaQuery.of(context).size.height;
-
-    Future.delayed(Duration(seconds: 2),() {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => Onboarding())
-      );
-    });
 
     return Scaffold(
       backgroundColor: AppColors.primary,

@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:habit/screens/main_screen_elements/help_screen.dart';
-import 'package:habit/screens/main_screen_elements/notes/notes_screen.dart';
-import 'package:habit/screens/main_screen_elements/ocr_screen.dart';
-import 'package:habit/screens/main_screen_elements/profile_screen.dart';
+import 'package:habit/screens/main_screen_elements/profile/screens/help_screen.dart';
+import 'package:habit/screens/main_screen_elements/notes/screens/notes_screen.dart';
+import 'package:habit/screens/main_screen_elements/ocr/screens/ocr_screen.dart';
+import 'package:habit/screens/main_screen_elements/profile/screens/profile_screen.dart';
 
 import '../core/constants/app_colors.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
 
+  static final GlobalKey<MainScreenState> globalKey = GlobalKey<MainScreenState>();
+
   @override
-  State<MainScreen> createState() => _MainScreenState();
+  State<MainScreen> createState() => MainScreenState();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class MainScreenState extends State<MainScreen> {
+
   int _selectedIndex = 0;
 
   void changeTab(int index) {

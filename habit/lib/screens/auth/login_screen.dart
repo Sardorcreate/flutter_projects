@@ -6,6 +6,8 @@ import 'package:habit/screens/main_screen.dart';
 import 'package:habit/widgets/app_bar.dart';
 import 'package:habit/widgets/auth_widgets.dart';
 
+import '../../core/storage/notes_storage.dart';
+
 class Login extends StatefulWidget {
   const Login({super.key});
 
@@ -38,7 +40,7 @@ class _LoginState extends State<Login> {
     });
   }
 
-  void login() {
+  void login() async {
     setState(() {
       showErrors = true;
     });
@@ -51,9 +53,10 @@ class _LoginState extends State<Login> {
       return;
     }
 
+    await NotesLocalStorage.saveIsLoggedIn(true);
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => MainScreen()),
+      MaterialPageRoute(builder: (context) => MainScreen(key: MainScreen.globalKey,)),
     );
   }
 
@@ -71,7 +74,7 @@ class _LoginState extends State<Login> {
 
     return Scaffold(
       backgroundColor: AppColors.background,
-      appBar: AppBarWidget(title: "Login"),
+      appBar: AppBarWidget(title: "Login", background: AppColors.background),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(horizontal: 36, vertical: 24),
         child: Column(

@@ -175,6 +175,7 @@ class OnboardingWidgets {
         children: [
           ListTile(title: Text("Forgot Password", style: TextStyle(fontSize: 18),),
             onTap: () {
+              Navigator.pop(context);
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => ForgotPassword()),
@@ -190,5 +191,66 @@ class OnboardingWidgets {
         ],
       ),
     );
+  }
+
+  static Future<bool> buildExitDialog(BuildContext context, double height, double width) async {
+    return await showDialog<bool>(
+      context: context,
+      builder: (context) => Dialog(
+        insetPadding: EdgeInsets.symmetric(horizontal: height * 0.047),
+        child: Container(
+          height: height * 0.2,
+          padding: EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            color: AppColors.secondary,
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text("Exit App", style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold)),
+              SizedBox(height: 18),
+              Text("Are you sure you want to exit the app?", style: TextStyle(fontSize: 14)),
+              SizedBox(height: 18),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  TextButton(
+                    onPressed: () => Navigator.of(context).pop(false),
+                    style: TextButton.styleFrom(
+                      backgroundColor: AppColors.secondary,
+                      foregroundColor: Colors.black,
+                      minimumSize: Size(width * 0.328, height * 0.046),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                        side: BorderSide(color: Colors.black12, width: 1),
+                      ),
+                    ),
+                    child: Text("No", style: TextStyle(fontSize: 14)),
+                  ),
+                  TextButton(
+                    onPressed: () => Navigator.of(context).pop(true),
+                    style: TextButton.styleFrom(
+                      backgroundColor: AppColors.primary,
+                      foregroundColor: AppColors.secondary,
+                      minimumSize: Size(width * 0.328, height * 0.046),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                    child: Text("Exit",
+                      style: TextStyle(
+                          fontSize: 14,
+                          color: AppColors.secondary
+                      ),
+                    ),
+                  )
+                ],
+              )
+            ],
+          ),
+        ),
+      ),
+    ) ?? false;
   }
 }

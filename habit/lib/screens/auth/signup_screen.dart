@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:habit/core/constants/app_colors.dart';
+import 'package:habit/core/storage/notes_storage.dart';
 import 'package:habit/screens/auth/login_screen.dart';
+import 'package:habit/screens/main_screen.dart';
 import 'package:habit/widgets/app_bar.dart';
 import 'package:habit/widgets/auth_widgets.dart';
 
@@ -34,7 +36,7 @@ class _SignUpState extends State<SignUp> {
     setState(() {});
   }
 
-  void _createAccount() {
+  void _createAccount() async {
     setState(() {
       showErrors = true;
     });
@@ -49,6 +51,8 @@ class _SignUpState extends State<SignUp> {
       return;
     }
 
+    await NotesLocalStorage.saveIsLoggedIn(true);
+
     if (passwordController.text != confirmPasswordController.text) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -59,12 +63,7 @@ class _SignUpState extends State<SignUp> {
       return;
     }
 
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('Account created successfully!'),
-        backgroundColor: Colors.green,
-      ),
-    );
+    Navigator.push(context, MaterialPageRoute(builder: (context) => MainScreen(key: MainScreen.globalKey,)));
   }
 
   void _togglePasswordVisibility() {
@@ -88,7 +87,7 @@ class _SignUpState extends State<SignUp> {
 
     return Scaffold(
       backgroundColor: AppColors.background,
-      appBar: AppBarWidget(title: "Create Account"),
+      appBar: AppBarWidget(title: "Create Account", background: AppColors.background),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(horizontal: 36, vertical: 24),
         child: Column(

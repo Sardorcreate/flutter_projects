@@ -4,7 +4,7 @@ import 'package:habit/screens/main_screen_elements/notes/screens/notes_screen.da
 import 'package:shared_preferences/shared_preferences.dart';
 
 class TodosLocalStorage {
-  static const String key = 'notes_list';
+  static const String key = 'todos_list';
 
   /// Save entire list
   static Future<void> saveTodos(List<TodoList> notes) async {

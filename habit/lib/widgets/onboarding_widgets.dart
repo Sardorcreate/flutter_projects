@@ -136,7 +136,7 @@ class OnboardingWidgets {
         child: Column(
           children: [
             Align(
-              alignment: AlignmentGeometry.topLeft,
+              alignment: Alignment.topLeft,
               child: IconButton(
                 onPressed: () => Navigator.of(context).pop(),
                 icon: Icon(Icons.menu, color: AppColors.primary,),

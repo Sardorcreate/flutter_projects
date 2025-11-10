@@ -218,8 +218,8 @@ class TodoList {
       todos: map['todos'] != null
           ? (map['todos'] as List).map((todoMap) => TodoItem.fromMap(todoMap)).toList()
           : [],
-      backColor: map['backColor'] != null
-          ? Color(map['backColor'])
+      backColor: map['color'] != null
+          ? Color(map['color'])
           : Colors.transparent,
     );
   }
